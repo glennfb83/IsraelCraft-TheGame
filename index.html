@@ -1,1 +1,96 @@
-
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IsraelCraft // National Civic Archive</title>
+  <meta name="description" content="The official fictional government portal for IsraelCraft: a nation-building game of infrastructure, diplomacy, and questionable procurement." />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+    :root { --paper:#f2eddf; --paper-2:#e5decc; --ink:#101a24; --navy:#123454; --red:#a44738; --yellow:#d5a846; --line:rgba(16,26,36,.72); --muted:#65707a; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); background:var(--paper); font-family:'Space Grotesk',Arial,sans-serif; line-height:1.35; }
+    body:before { content:""; pointer-events:none; position:fixed; inset:0; z-index:5; opacity:.12; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E"); mix-blend-mode:multiply; }
+    a { color:inherit; text-decoration:none; }
+    .wrap { max-width:1320px; margin:0 auto; padding:0 28px; }
+    .mono { font-family:'DM Mono',monospace; text-transform:uppercase; letter-spacing:.1em; font-size:11px; }
+    .topline { background:var(--navy); color:var(--paper); padding:9px 0; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.1em; text-transform:uppercase; }
+    .topline .wrap { display:flex; justify-content:space-between; gap:18px; }
+    header { border-bottom:3px double var(--line); }
+    .masthead { display:grid; grid-template-columns:180px 1fr 180px; align-items:center; gap:20px; padding:28px 0 21px; }
+    .seal { width:74px; height:74px; border:2px solid var(--navy); outline:1px solid var(--navy); outline-offset:4px; display:grid; place-items:center; font-family:'Archivo Black'; font-size:20px; color:var(--navy); transform:rotate(-5deg); }
+    .mast-title { text-align:center; border-left:1px solid var(--line); border-right:1px solid var(--line); }
+    .mast-title .eyebrow { color:var(--red); font-weight:700; }
+    h1,h2,h3,p { margin-top:0; }
+    .mast-title h1 { font:42px/1 'Archivo Black',sans-serif; letter-spacing:-.06em; margin:7px 0 5px; text-transform:uppercase; }
+    .edition { text-align:right; }
+    .edition strong { display:block; font-size:20px; font-weight:700; color:var(--navy); }
+    nav { display:flex; justify-content:center; border-top:1px solid var(--line); }
+    nav a { padding:13px 22px; border-left:1px solid var(--line); font:11px 'DM Mono',monospace; text-transform:uppercase; }
+    nav a:last-child { border-right:1px solid var(--line); }
+    nav a:hover { background:var(--navy); color:var(--paper); }
+    .ticker { margin:20px 0 0; background:var(--red); color:white; padding:10px 13px; display:flex; gap:20px; overflow:hidden; white-space:nowrap; font:11px 'DM Mono',monospace; text-transform:uppercase; }
+    .ticker b { color:#ffd889; }
+    .hero { display:grid; grid-template-columns:1.3fr .7fr; gap:24px; padding:36px 0 25px; border-bottom:1px solid var(--line); }
+    .hero h2 { font:clamp(52px,8vw,105px)/.87 'Archivo Black',sans-serif; letter-spacing:-.075em; max-width:850px; margin:10px 0 18px; text-transform:uppercase; }
+    .hero h2 em { color:var(--red); font-style:normal; }
+    .hero-copy { font-size:18px; max-width:650px; }
+    .hero-side { border:1px solid var(--line); border-top:5px solid var(--navy); padding:18px; position:relative; align-self:end; background:rgba(255,255,255,.16); }
+    .hero-side:after { content:'OFFICIAL / PROBABLY'; position:absolute; top:13px; right:14px; color:var(--red); font:10px 'DM Mono'; transform:rotate(4deg); }
+    .status { display:flex; gap:9px; align-items:center; margin:32px 0 25px; font:11px 'DM Mono'; text-transform:uppercase; }
+    .light { width:10px; height:10px; border-radius:50%; background:#42a76b; box-shadow:0 0 0 3px rgba(66,167,107,.2); animation:blink 2s infinite; }
+    @keyframes blink { 50% { opacity:.3; } }
+    .btn { border:2px solid var(--navy); background:var(--navy); color:var(--paper); padding:13px 17px; font:11px 'DM Mono'; text-transform:uppercase; display:inline-block; box-shadow:4px 4px 0 var(--red); cursor:pointer; }
+    .btn:hover { transform:translate(2px,2px); box-shadow:2px 2px 0 var(--red); }
+    .btn.alt { background:transparent; color:var(--navy); box-shadow:none; margin-left:12px; }
+    .section-head { display:flex; align-items:baseline; justify-content:space-between; border-bottom:3px double var(--line); padding:25px 0 9px; }
+    .section-head h2 { margin:0; font:28px 'Archivo Black'; text-transform:uppercase; letter-spacing:-.04em; }
+    .section-head span { color:var(--red); }
+    .grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:15px; padding:17px 0 35px; }
+    .card { border:1px solid var(--line); padding:19px; min-height:170px; position:relative; background:rgba(255,255,255,.15); }
+    .card:before { content:''; position:absolute; top:8px; right:8px; width:6px; height:6px; background:var(--red); }
+    .card h3 { font-size:23px; line-height:1; margin:18px 0 10px; text-transform:uppercase; letter-spacing:-.04em; }
+    .card p { font-size:14px; color:#424d56; }
+    .tag { color:var(--navy); font:10px 'DM Mono'; text-transform:uppercase; }
+    .archive { display:grid; grid-template-columns:1fr 1fr; gap:24px; padding:17px 0 35px; }
+    .panel { border:4px double var(--navy); padding:19px; }
+    .panel h3 { font:25px 'Archivo Black'; text-transform:uppercase; margin:0 0 16px; }
+    .registry { display:grid; gap:0; }
+    .registry-row { display:grid; grid-template-columns:90px 1fr 90px; gap:12px; border-top:1px solid var(--line); padding:13px 0; font-size:13px; }
+    .registry-row:last-child { border-bottom:1px solid var(--line); }
+    .registry-row .date,.score { font:10px 'DM Mono'; color:var(--red); text-transform:uppercase; }
+    .mapbox { min-height:310px; background:#d9d2c1; overflow:hidden; position:relative; border:1px solid var(--line); background-image:linear-gradient(28deg,transparent 45%,rgba(18,52,84,.25) 46%,transparent 47%),linear-gradient(108deg,transparent 45%,rgba(18,52,84,.2) 46%,transparent 47%),repeating-linear-gradient(0deg,transparent 0 35px,rgba(18,52,84,.12) 36px 37px); }
+    .mapbox:before { content:'N'; position:absolute; top:12px; left:18px; font:22px 'DM Mono'; color:var(--navy); }
+    .mapbox:after { content:'FIELD SURVEY 1976'; position:absolute; bottom:12px; right:12px; background:var(--paper); border:1px solid var(--line); padding:6px; font:9px 'DM Mono'; }
+    .pin { position:absolute; width:14px; height:14px; background:var(--red); border-radius:50% 50% 50% 0; transform:rotate(-45deg); border:2px solid var(--paper); }
+    .pin i { position:absolute; width:4px; height:4px; background:var(--paper); border-radius:50%; top:3px; left:3px; }
+    .p1{left:29%;top:32%}.p2{left:62%;top:49%}.p3{left:45%;top:73%}.p4{left:76%;top:22%}
+    .stats { display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid var(--line); border-bottom:1px solid var(--line); margin:4px 0 35px; }
+    .stat { padding:20px 14px; border-right:1px solid var(--line); }
+    .stat:last-child { border:0; }.stat b { display:block; font:42px 'Archivo Black'; color:var(--navy); letter-spacing:-.08em; }.stat span { font:10px 'DM Mono'; text-transform:uppercase; }
+    .notice { margin:18px 0 37px; border:2px solid var(--red); padding:17px 20px; display:flex; gap:20px; align-items:center; background:rgba(164,71,56,.06); }.notice strong { font:19px 'Archivo Black'; color:var(--red); text-transform:uppercase; }.notice p { margin:0; font-size:13px; }
+    footer { background:var(--navy); color:var(--paper); margin-top:10px; padding:30px 0; }.footer-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; }.footer-grid h3 { font:20px 'Archivo Black'; text-transform:uppercase; }.footer-grid p { font-size:12px; opacity:.75; }.footer-bottom { border-top:1px solid rgba(255,255,255,.35); margin-top:24px; padding-top:14px; font:10px 'DM Mono'; display:flex; justify-content:space-between; }
+    @media(max-width:800px){ .wrap{padding:0 17px}.masthead{grid-template-columns:60px 1fr;}.edition{display:none}.mast-title{border-right:0}.mast-title h1{font-size:25px}.seal{width:46px;height:46px;font-size:13px}.topline .wrap{font-size:8px}.topline .wrap span:last-child{display:none}nav{overflow:auto;justify-content:flex-start}nav a{padding:12px 14px;white-space:nowrap}.hero{grid-template-columns:1fr;padding-top:24px}.hero h2{font-size:55px}.grid-3,.archive{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.stat:nth-child(2){border:0}.stat{border-bottom:1px solid var(--line)}.notice{display:block}.notice strong{display:block;margin-bottom:8px}.footer-grid{grid-template-columns:1fr}.footer-bottom{display:block}.footer-bottom span{display:block;margin-top:8px} }
+  </style>
+</head>
+<body>
+  <div class="topline"><div class="wrap"><span>◉ NATIONAL INFORMATION SERVICE // NODE 07</span><span>DOCUMENT CLASS: PUBLIC / SATIRICAL</span></div></div>
+  <header>
+    <div class="wrap masthead"><div class="seal">IC<br><small>1976</small></div><div class="mast-title"><div class="eyebrow mono">The provisional republic of</div><h1>IsraelCraft</h1><div class="mono">Office of nation-building & recreational bureaucracy</div></div><div class="edition"><span class="mono">Archive edition</span><strong>VOL. 04 / NO. 16</strong><span class="mono">23 SEP 2026</span></div></div>
+    <nav><a href="#briefing">Briefing</a><a href="#systems">State systems</a><a href="#map">Cartography</a><a href="#registry">Registry</a><a href="#about">About the game</a></nav>
+  </header>
+  <main class="wrap">
+    <div class="ticker"><b>LIVE WIRE</b><span>◼ Citizens advised to maintain civic optimism during infrastructure deployment</span><span>◼ Ministry confirms roads remain theoretically connected</span></div>
+    <section class="hero" id="briefing"><div><div class="mono" style="color:var(--red)">★ SPECIAL BRIEFING / PLAYABLE ARCHIVE</div><h2>Build a nation.<br><em>File the paperwork.</em></h2><p class="hero-copy">IsraelCraft is a satirical nation-building game about infrastructure, diplomacy, and the delicate art of placing one more road where the last road already is.</p><div class="status"><i class="light"></i> Archive server operational <span>·</span> population: optimistic</div><a class="btn" href="#systems">Enter the archive →</a><a class="btn alt" href="#about">Read the brief</a></div><aside class="hero-side"><div class="mono">Form IC-001 / executive summary</div><h3>The state is yours to mismanage.</h3><p>Plan cities, allocate resources, negotiate borders, and create a functioning society from the comfort of your browser.</p><div class="mono">Difficulty rating: administratively complex</div></aside></section>
+    <div class="section-head" id="systems"><h2>State systems</h2><span class="mono">INDEX // 06 ACTIVE DEPARTMENTS</span></div>
+    <section class="grid-3"><article class="card"><span class="tag">01 / public works</span><h3>Build the grid</h3><p>Lay rail, raise towers, and connect every outpost before the Ministry of Planning sends a strongly worded memo.</p></article><article class="card"><span class="tag">02 / resource bureau</span><h3>Balance the books</h3><p>Turn raw materials into national progress. Or at least into a very impressive spreadsheet.</p></article><article class="card"><span class="tag">03 / foreign office</span><h3>Talk to neighbors</h3><p>Trade, collaborate, and diplomatically explain why your newest border is “a temporary administrative measure.”</p></article><article class="card"><span class="tag">04 / civil registry</span><h3>Grow the population</h3><p>People require homes, roads, food, and a compelling reason not to move back in with their parents.</p></article><article class="card"><span class="tag">05 / defense ledger</span><h3>Secure the perimeter</h3><p>Protect the republic with strategic planning and the reassuring glow of a well-maintained status light.</p></article><article class="card"><span class="tag">06 / cultural affairs</span><h3>Make it yours</h3><p>Shape a unique national identity through flags, monuments, and committees with overlapping mandates.</p></article></section>
+    <section class="stats"><div class="stat"><b>01</b><span>nation under construction</span></div><div class="stat"><b>∞</b><span>forms awaiting approval</span></div><div class="stat"><b>76%</b><span>roads facing the right way</span></div><div class="stat"><b>0</b><span>glossy gradients authorized</span></div></section>
+    <div class="section-head" id="map"><h2>Field intelligence</h2><span class="mono">MAP ROOM // SHEET A-17</span></div>
+    <section class="archive"><div class="panel"><h3>Territory overview</h3><div class="mapbox"><i class="pin p1"><i></i></i><i class="pin p2"><i></i></i><i class="pin p3"><i></i></i><i class="pin p4"><i></i></i></div><p class="mono" style="margin:13px 0 0">Red pins indicate locations of strategic importance or a particularly good falafel stand.</p></div><div class="panel" id="registry"><h3>Recent dispatches</h3><div class="registry"><div class="registry-row"><span class="date">23.09.76</span><strong>New rail corridor commissioned</strong><span class="score">Approved</span></div><div class="registry-row"><span class="date">18.09.76</span><strong>Cabinet discovers zoning</strong><span class="score">Pending</span></div><div class="registry-row"><span class="date">02.09.76</span><strong>Harvest exceeds expectations</strong><span class="score">Filed</span></div><div class="registry-row"><span class="date">28.08.76</span><strong>Neighbor requests meeting</strong><span class="score">Urgent</span></div><div class="registry-row"><span class="date">11.08.76</span><strong>First monument unveiled</strong><span class="score">Solid</span></div></div></div></section>
+    <div class="notice"><strong>⚠ Public notice</strong><p>This is a fictional game world. Any resemblance to real ministries, municipal disputes, or inexplicably delayed construction projects is purely procedural.</p></div>
+  </main>
+  <footer id="about"><div class="wrap"><div class="footer-grid"><div><h3>IsraelCraft</h3><p>A browser-based nation-building game by citizens, for citizens, and for that one person who enjoys municipal zoning.</p></div><div><h3>Archive links</h3><p>Player handbook<br>Development records<br>National map index<br>Report a bureaucratic anomaly</p></div><div><h3>System status</h3><p><span class="light" style="display:inline-block;margin-right:7px"></span> All departments nominal<br><br><span class="mono">Last audit: never // uptime: surprisingly good</span></p></div></div><div class="footer-bottom"><span>© 1976–2026 PROVISIONAL ISRAELCRAFT ADMINISTRATION</span><span>NO CITIZENSHIP REQUIRED · SOME PATIENCE RECOMMENDED</span></div></div></footer>
+  <script>document.querySelectorAll('.btn').forEach(b=>b.addEventListener('click',()=>{document.body.animate([{opacity:.88},{opacity:1}],{duration:180})}));</script>
+</body>
+</html>
